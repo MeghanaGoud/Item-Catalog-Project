@@ -1,0 +1,25 @@
+{% extends "main.html"%}
+{% block content%}
+{% include "header.html"%}
+<div class="container">
+	<div class="row catalog">
+		<div class=" col-sm-4 categories">
+			<h4><i>Categories</i></h4>
+			<div class="cat-items">
+			{% for i in categories %}
+				<a href="{{url_for('showitems', catlog_id=i.id )}}">{{i.name}}</a>	
+			{% endfor %}
+			</div>
+		</div>
+		<div class=" col-sm-8">
+			<a href="{{url_for('addnewitem')}}">ADD Item</a><span>(user have to log in before adding an item)</span>
+			<h3><i> items in {{categories.name}}</i></h3>
+			{% for i in categoryitems %}
+				<div>
+					<a href="{{url_for('showcategoryitem', catlog_id =i.Cat_id, item_id=i.id)}}">{{i.name}}</a>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+</div>
+{% endblock %}

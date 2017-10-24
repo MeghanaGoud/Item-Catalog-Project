@@ -1,0 +1,21 @@
+{% extends "main.html"%}
+{% block content%}
+{% include "header.html"%}
+	<div class="new-item-form">
+		<h5><i>{{categoryitem.name}}</i></h5>
+		<div>
+			<p>{{categoryitem.description}}</p>
+		</div>
+		<div>
+			<div class="options">
+				<a href="{{url_for('showitems',catlog_id=categoryitem.Cat_id )}}">Back</a>
+				<br>
+			{% if 'username' in session and creator.id==session['user_id']%}
+				<a href="{{url_for('edititem', catlog_id=categoryitem.Cat_id, item_id=categoryitem.id)}}">edit</a>
+				<a href="{{url_for('deleteitem', catlog_id=categoryitem.Cat_id, item_id=categoryitem.id)}}">delete</a>	
+			{% endif %}
+			</div>
+		</div>
+			
+	</div>
+{% endblock%}

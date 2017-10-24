@@ -1,0 +1,30 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+<div class="container">
+  <div class="row catalog">
+  	<div class="col-sm-4 categories">
+  		<h4><i>Categories</i></h4>
+  			<div class="cat-items">
+  			{% for i in categories %}
+  				<a href="{{url_for('showitems', catlog_id=i.id )}}">{{i.name}}</a>	
+  			{% endfor %}
+  			</div>
+  	</div>
+  	<div class="col-sm-8 latest">
+  		{% if 'username' in session %}
+  			<a href="{{url_for('addnewitem')}}">additem</a>
+  		{% endif %}
+  		<h4><i>latestitems</i></h4>
+  		<div>
+  			{% for categoryitem in categoryitems %}
+  				<a href="{{url_for('showcategoryitem', catlog_id=categoryitem.Cat_id, item_id=categoryitem.id)}}">
+  				 <span>{{categoryitem.name}}</span>
+  				 <span>({{categoryitem.categories.name}})</span>
+  				</a><hr>
+  			{% endfor %}
+  		</div>
+  	</div>
+  </div>
+</div>  	
+{% endblock %}

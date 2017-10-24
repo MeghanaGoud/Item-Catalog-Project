@@ -1,0 +1,8 @@
+{% extends "main.html"%}
+{% block content%}
+{% include "header.html"%}
+<div>
+	<h3>{{categoryItem.name}}</h3>
+	<a href="{{url_for('edititem',catlog_id = categoryitem.Cat_id, item_id = categoryitem.id)}}">edit</a>
+	<a>delete</a>
+</div>

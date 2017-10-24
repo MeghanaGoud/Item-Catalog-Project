@@ -1,0 +1,19 @@
+{% extends "main.html"%}
+{%block content%}
+    <header>
+        <section class="container">
+            <div class="logo pull-left">
+                <h3>Item-Catalogs</h3>
+            </div>
+            <div>
+                <button class="btn pull-right login">
+                  {%if 'username' not in session %}
+                    <a href="{{url_for('showLogin')}}" >Login </a>
+                  {% else %}
+                    <a href="{{url_for('disconnect')}}">Logout </a>
+                  {% endif %}
+                </button>
+            </div>
+        </section>
+    </header>
+{% endblock %}
